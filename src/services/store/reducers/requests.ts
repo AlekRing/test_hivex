@@ -11,14 +11,14 @@ const initialState = {
 } as IRequestsInitialState;
 
 const requestsSlice = createSlice({
-    name: "requests",
-    initialState,
-    reducers: {
-        addRequest: (state, action) => ({
-            ...state,
-            requests: [...state.requests, action.payload.request]
-        }),
-    }
+  name: "requests",
+  initialState,
+  reducers: {
+    addRequest: (state, action) => ({
+      ...state,
+      requests: [...state.requests, action.payload.request],
+    }),
+  },
 });
 
 export default requestsSlice.reducer;

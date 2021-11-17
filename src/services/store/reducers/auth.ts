@@ -30,12 +30,12 @@ const authSlice = createSlice({
       sublogin: action.payload.sublogin,
     }),
     authFail: (state) => ({
-        ...state,
-        loading: false,
-        sessionKey: null,
-        login: null,
-        sublogin: null
-    })
+      ...state,
+      loading: false,
+      sessionKey: null,
+      login: null,
+      sublogin: null,
+    }),
   },
 });
 

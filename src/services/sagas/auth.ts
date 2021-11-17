@@ -1,4 +1,4 @@
-import { all, put, call, takeLatest, takeEvery } from "redux-saga/effects";
+import { put, call, takeEvery } from "redux-saga/effects";
 import api from "../helpers/sendsay";
 import { authenticate, authFail, authSuccess } from "../store/reducers/auth";
 
@@ -46,11 +46,3 @@ export function* logoutSaga() {
 export function* root() {
   yield takeEvery(authenticate, tryAuthSaga);
 }
-
-// export default function* root() {
-//   yield all([
-//     takeLatest(ActionTypes.AUTHENTICATE, authSaga),
-//     takeLatest(ActionTypes.AUTHENTICATE_CHECK, authCheckSaga),
-//     takeLatest(ActionTypes.LOGOUT, logoutSaga),
-//   ]);
-// }
