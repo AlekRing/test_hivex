@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { authenticate } from '../../services/store/reducers/auth';
 import { selectIsLoggedIn, selectLoading } from '../../services/store/selectors';
 
-
 import s from './style.module.scss'
 
 function LoginPage() {
@@ -18,8 +17,6 @@ function LoginPage() {
 
   useEffect(() => {
     if (isLoggedIn?.length) {
-      console.log('LOGIN_PAGE');
-
       navigate('/console');
     }
   }, [isLoggedIn, navigate]);
