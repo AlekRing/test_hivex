@@ -1,0 +1,22 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.form {
+    width: 520px;
+    height: 425px;
+    left: calc(50% - 520px / 2);
+    top: 222px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 40px 30px;
+}
