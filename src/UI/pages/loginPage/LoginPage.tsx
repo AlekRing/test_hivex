@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authenticate } from "../../services/store/reducers/auth";
+import { authenticate } from "../../../services/store/reducers/auth";
 import {
   selectIsLoggedIn,
   selectLoading,
-} from "../../services/store/selectors";
+} from "../../../services/store/selectors";
+import { Input } from "../../components/input/input";
+import { Button } from "../../components/button/button";
+import {
+  loginButtonText,
+  loginInputPlaceholder,
+  passwordInputPlaceholder,
+  subLoginInputPlaceholder,
+} from "../../data/globalVariables";
 
 import s from "./style.module.scss";
 
@@ -43,25 +51,31 @@ function LoginPage() {
     <section className={s.wrapper}>
       <img className={s.logo} src="/icons/logo.svg" alt="" />
       <form className={s.form} onSubmit={onSubmit} action="/">
-        <input
+        <Input
           value={login}
-          onChange={(e) => setLogin(e.target.value)}
-          placeholder="Логин"
+          onChange={setLogin}
+          placeHolder={loginInputPlaceholder}
+          type="text"
         />
-        <input
+        <Input
           value={sublogin}
-          onChange={(e) => setSubLogin(e.target.value)}
-          placeholder="Сублогин"
+          onChange={setSubLogin}
+          placeHolder={subLoginInputPlaceholder}
+          type="text"
         />
-        <input
+        <Input
           value={password}
+          onChange={setPassword}
+          placeHolder={passwordInputPlaceholder}
           type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Пароль"
         />
-        <button type="submit" onClick={onSubmit} disabled={!!loading}>
-          Отправить
-        </button>
+        <Button
+          type="submit"
+          text={loginButtonText}
+          action={onSubmit}
+          isDisabled={!!loading}
+          styles={s.button}
+        />
       </form>
     </section>
   );
