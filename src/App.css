@@ -1,11 +1,16 @@
 :root {
   --main-font-black: #0d0d0d;
+  --secondary-black: #000;
+  --main-white: #ffffff;
+
+  --blue-gradient-from: #45a6ff;
+  --blue-gradient-to: #0055fb;
 }
 
 button {
   border: none;
   outline: none;
-  color: #ffffff;
+  color: var(--main-white);
 }
 
 button:hover {

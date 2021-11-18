@@ -6,8 +6,14 @@ import {
   selectIsLoggedIn,
   selectLoading,
 } from "../../../services/store/selectors";
-import { Button } from "../../components/button/button";
 import { Input } from "../../components/input/input";
+import { Button } from "../../components/button/button";
+import {
+  loginButtonText,
+  loginInputPlaceholder,
+  passwordInputPlaceholder,
+  subLoginInputPlaceholder,
+} from "../../data/globalVariables";
 
 import s from "./style.module.scss";
 
@@ -48,24 +54,24 @@ function LoginPage() {
         <Input
           value={login}
           onChange={setLogin}
-          placeHolder="Логин"
+          placeHolder={loginInputPlaceholder}
           type="text"
         />
         <Input
           value={sublogin}
           onChange={setSubLogin}
-          placeHolder="Сублогин"
+          placeHolder={subLoginInputPlaceholder}
           type="text"
         />
         <Input
           value={password}
           onChange={setPassword}
-          placeHolder="Пароль"
+          placeHolder={passwordInputPlaceholder}
           type="password"
         />
         <Button
           type="submit"
-          text="Войти"
+          text={loginButtonText}
           action={onSubmit}
           isDisabled={!!loading}
           styles={s.button}

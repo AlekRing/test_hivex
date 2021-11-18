@@ -1,7 +1,11 @@
 .button {
   width: 110px;
   height: 40px;
-  background: linear-gradient(180deg, #45a6ff 0%, #0055fb 100%), #c4c4c4;
+  background: linear-gradient(
+    180deg,
+    var(--blue-gradient-from) 0%,
+    var(--blue-gradient-to) 100%
+  );
   font-weight: 500;
   font-size: 16px;
   line-height: 30px;

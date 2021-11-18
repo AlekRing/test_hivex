@@ -2,12 +2,13 @@ import React from "react";
 
 import s from "./style.module.scss";
 import cn from "classnames";
+import { defaultStyles } from "../../data/globalVariables";
 
 interface IButton {
   action: React.MouseEventHandler<HTMLButtonElement>;
-  isDisabled: boolean;
-  text: string;
-  type: "submit" | "button" | "reset";
+  isDisabled: IsActiveFlag;
+  text: ShortText;
+  type: ButtonType;
   styles?: any;
 }
 
@@ -16,7 +17,7 @@ export const Button = ({
   isDisabled,
   text,
   type,
-  styles = null,
+  styles = defaultStyles,
 }: IButton) => {
   return (
     <button
