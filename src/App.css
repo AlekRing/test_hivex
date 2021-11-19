@@ -2,9 +2,16 @@
   --main-font-black: #0d0d0d;
   --secondary-black: #000;
   --main-white: #ffffff;
+  --gray-medium: #999999;
 
   --blue-gradient-from: #45a6ff;
   --blue-gradient-to: #0055fb;
+  --blue-gradient-hover: #ffffff26;
+  --blue-gradient-active: #00000026;
+  --disabled: #c4c4c4;
+
+  --error-bg: #cf2c001a;
+  --error-color: #cf2c00;
 }
 
 button {
@@ -19,4 +26,12 @@ button:hover {
 
 input {
   outline: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
 }

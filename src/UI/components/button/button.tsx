@@ -5,8 +5,9 @@ import cn from "classnames";
 import { defaultStyles } from "../../data/globalVariables";
 
 interface IButton {
-  action: React.MouseEventHandler<HTMLButtonElement>;
-  isDisabled: IsActiveFlag;
+  action?: React.MouseEventHandler<HTMLButtonElement>;
+  isDisabled?: IsActiveFlag;
+  isLoading: IsLoadingFlag;
   text: ShortText;
   type: ButtonType;
   styles?: any;
@@ -15,18 +16,19 @@ interface IButton {
 export const Button = ({
   action,
   isDisabled,
+  isLoading,
   text,
   type,
   styles = defaultStyles,
 }: IButton) => {
   return (
     <button
-      className={cn(s.button, styles)}
+      className={cn(s.button, styles, isLoading && s.loading)}
       type={type}
-      onClick={action}
+      onClick={action && action}
       disabled={isDisabled}
     >
-      {text}
+      {isLoading ? <img src="/icons/loader.svg" alt="loading" /> : text}
     </button>
   );
 };
