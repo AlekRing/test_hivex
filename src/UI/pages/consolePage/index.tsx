@@ -1,12 +1,15 @@
 import React from "react";
+import Footer from "../../components/footer/footer";
 import Header from "../../components/header";
+import RequestResponseFields from "../../components/requestRespondFields";
+import RequestsLine from "../../components/requestsLine";
 
-import s from "./style.module.scss";
-
-interface IConsole {}
-
-function Console({}: IConsole) {
-  return <Header />;
+function Console() {
+  return (
+    <>
+      <Header /> <RequestsLine /> <RequestResponseFields /> <Footer />
+    </>
+  );
 }
 
 export default Console;

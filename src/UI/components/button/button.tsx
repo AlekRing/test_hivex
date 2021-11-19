@@ -9,7 +9,7 @@ interface IButton {
   isDisabled?: IsActiveFlag;
   isLoading: IsLoadingFlag;
   text: ShortText;
-  type: ButtonType;
+  type?: ButtonType;
   styles?: any;
 }
 
@@ -18,7 +18,7 @@ export const Button = ({
   isDisabled,
   isLoading,
   text,
-  type,
+  type = "button",
   styles = defaultStyles,
 }: IButton) => {
   return (

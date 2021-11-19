@@ -10,9 +10,8 @@
     var(--blue-gradient-to) 100%
   );
   font-weight: 500;
-  font-size: 16px;
   line-height: 30px;
-  border-radius: 5px;
+  border-radius: var(--border-radius-general);
   transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 

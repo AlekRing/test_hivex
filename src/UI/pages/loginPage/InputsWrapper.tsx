@@ -1,3 +1,4 @@
+import cn from "classnames";
 import React from "react";
 import { Input } from "../../components/input/input";
 import {
@@ -61,7 +62,7 @@ function InputsWrapper({
           placeHolder={passwordInputSecondaryText}
           type="password"
           isRequired
-          styles={isValid === false ? s.invalid_input : null}
+          styles={cn(isValid === false ? s.invalid_input : null, s.password)}
         />
       </div>
     </section>

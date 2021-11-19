@@ -1,0 +1,24 @@
+.dot {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.small_dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--border-color);
+}
+
+.small_dot + .small_dot {
+  margin-top: 3px;
+}
+
+.dots_menu {
+  width: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
