@@ -10,6 +10,7 @@ import {
 import { AuthSchema } from "../../../services/validationSchema/authSchema";
 import { Button } from "../../components/button/button";
 import { ErrorBlock } from "../../components/errorBlock/errorBlock";
+import Logo from "../../components/logo/logo";
 import {
   appName,
   authErrorText,
@@ -77,7 +78,7 @@ function LoginPage() {
 
   return (
     <section className={s.wrapper}>
-      <img className={s.logo} src="/icons/logo.svg" alt="" />
+      <Logo styles={s.logo} />
       <form className={s.form} onSubmit={onSubmit} action="/">
         <h2 className={s.app_name}>{appName}</h2>
         {errorMessage && (
