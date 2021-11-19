@@ -1,6 +1,9 @@
 .button {
   width: 110px;
   height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(
     180deg,
     var(--blue-gradient-from) 0%,
@@ -10,4 +13,40 @@
   font-size: 16px;
   line-height: 30px;
   border-radius: 5px;
+  transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.button:hover {
+  background: linear-gradient(
+      0deg,
+      var(--blue-gradient-hover),
+      var(--blue-gradient-hover)
+    ),
+    linear-gradient(
+      180deg,
+      var(--blue-gradient-from) 0%,
+      var(--blue-gradient-to) 100%
+    );
+}
+
+.loading {
+  pointer-events: none;
+}
+
+.button:active {
+  background: linear-gradient(
+      0deg,
+      var(--blue-gradient-active),
+      var(--blue-gradient-active)
+    ),
+    linear-gradient(
+      180deg,
+      var(--blue-gradient-from) 0%,
+      var(--blue-gradient-to) 100%
+    );
+}
+
+.button:disabled {
+  background: var(--disabled);
+  cursor: auto;
 }

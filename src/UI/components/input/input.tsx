@@ -2,7 +2,11 @@ import React from "react";
 
 import s from "./style.module.scss";
 import cn from "classnames";
-import { defaulInput, defaultStyles } from "../../data/globalVariables";
+import {
+  defaulInputType,
+  defaultInputIsRequired,
+  defaultStyles,
+} from "../../data/globalVariables";
 
 interface IButton {
   onChange: Function;
@@ -10,14 +14,16 @@ interface IButton {
   value: InputValue;
   type: InputType;
   styles?: any;
+  isRequired?: InputIsRequired;
 }
 
 export const Input = ({
   onChange,
   placeHolder,
   value,
-  type = defaulInput,
+  type = defaulInputType,
   styles = defaultStyles,
+  isRequired = defaultInputIsRequired,
 }: IButton) => {
   return (
     <input
@@ -26,6 +32,7 @@ export const Input = ({
       type={type}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeHolder}
+      required={isRequired}
     />
   );
 };

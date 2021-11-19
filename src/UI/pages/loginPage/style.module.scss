@@ -1,5 +1,6 @@
 .wrapper {
   height: 100%;
+  margin-top: calc(50vh - 500px / 2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +13,7 @@
 
 .form {
   width: 520px;
-  height: 425px;
+  min-height: 426px;
   left: calc(50% - 520px / 2);
   top: 222px;
   background: var(--main-white);
@@ -21,6 +22,39 @@
   padding: 40px 30px;
 }
 
+.app_name {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+}
+
 .button {
   margin-top: 20px;
+}
+
+.input_wrapper + .input_wrapper {
+  margin-top: 20px;
+  max-width: 460px;
+}
+
+.hints_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hint {
+  color: var(--gray-medium);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.invalid_input {
+  border: 1px solid red;
+}
+
+.input_heading {
+  margin-bottom: 6px;
+  font-size: 16px;
+  line-height: 20px;
 }
