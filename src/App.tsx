@@ -6,6 +6,7 @@ import LoginPage from "./UI/pages/loginPage/LoginPage";
 import { store } from "./services/store";
 
 import "./App.css";
+import Console from "./UI/pages/consolePage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<LoginPage />} />
+          <Route path="/console" element={<Console />} />
         </Routes>
       </Provider>
     </BrowserRouter>
