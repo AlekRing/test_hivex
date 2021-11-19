@@ -1,12 +1,11 @@
 import React from "react";
-// import {Provider} from 'react-redux';
+import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import LoginPage from "./UI/components/LoginPage";
+import LoginPage from "./UI/pages/loginPage/LoginPage";
 import { store } from "./services/store";
 
 import "./App.css";
-import { Provider } from "react-redux";
 
 function App() {
   return (

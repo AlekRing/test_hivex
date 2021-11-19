@@ -1,4 +1,4 @@
 /// <reference types="react-scripts" />
-import Sendsay from 'sendsay-api';
+import Sendsay from "sendsay-api";
 
 export default Sendsay;

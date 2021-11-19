@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface IAuthInitialState {
-  loading: boolean;
-  sessionKey: string | null;
-  login: string | null;
-  sublogin: string | null;
+  loading: IsLoadingFlag;
+  sessionKey: ShortText | null;
+  login: ShortText | null;
+  sublogin: ShortText | null;
+  errorMessage: ShortText;
 }
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   sessionKey: null,
   login: null,
   sublogin: null,
+  errorMessage: "",
 } as IAuthInitialState;
 
 const authSlice = createSlice({
@@ -30,14 +32,19 @@ const authSlice = createSlice({
       sublogin: action.payload.sublogin,
     }),
     authFail: (state) => ({
-        ...state,
-        loading: false,
-        sessionKey: null,
-        login: null,
-        sublogin: null
-    })
+      ...state,
+      loading: false,
+      sessionKey: null,
+      login: null,
+      sublogin: null,
+    }),
+    logError: (state, action) => ({
+      ...state,
+      errorMessage: action.payload.err,
+    }),
   },
 });
 
-export const { authenticate, authSuccess, authFail } = authSlice.actions;
+export const { authenticate, authSuccess, authFail, logError } =
+  authSlice.actions;
 export default authSlice.reducer;

@@ -1,6 +1,11 @@
-import { all, put, call, takeLatest, takeEvery } from "redux-saga/effects";
+import { put, call, takeEvery } from "redux-saga/effects";
 import api from "../helpers/sendsay";
-import { authenticate, authFail, authSuccess } from "../store/reducers/auth";
+import {
+  authenticate,
+  authFail,
+  authSuccess,
+  logError,
+} from "../store/reducers/auth";
 
 export function* authCheckSaga() {
   try {
@@ -15,6 +20,7 @@ export function* authCheckSaga() {
 }
 
 export function* tryAuthSaga({ payload }: any) {
+  let error = null;
   yield api.sendsay
     .login({
       login: payload.login,
@@ -25,17 +31,32 @@ export function* tryAuthSaga({ payload }: any) {
       document.cookie = `sendsay_session=${api.sendsay.session}`;
     })
     .catch((err: any) => {
-      document.cookie = "";
-      console.log("err", err);
+      error = err;
     });
 
-  yield put(
-    authSuccess({
-      sessionKey: api.sendsay.session,
-      login: payload.login,
-      sublogin: payload.sublogin,
-    })
-  );
+  if (error) {
+    yield authFailedSaga(error);
+    return;
+  }
+
+  yield authSuccessSaga({
+    sessionKey: api.sendsay.session,
+    login: payload.login,
+    sublogin: payload.sublogin,
+  });
+}
+
+function* authSuccessSaga(payload: any) {
+  yield put(authSuccess({ ...payload }));
+}
+
+function* authFailedSaga(err: any) {
+  const error = `{ id: "${err.id}", explain: "${err.explain}"}`;
+
+  console.error("err", err);
+
+  yield logoutSaga();
+  yield put(logError({ err: error }));
 }
 
 export function* logoutSaga() {
@@ -46,11 +67,3 @@ export function* logoutSaga() {
 export function* root() {
   yield takeEvery(authenticate, tryAuthSaga);
 }
-
-// export default function* root() {
-//   yield all([
-//     takeLatest(ActionTypes.AUTHENTICATE, authSaga),
-//     takeLatest(ActionTypes.AUTHENTICATE_CHECK, authCheckSaga),
-//     takeLatest(ActionTypes.LOGOUT, logoutSaga),
-//   ]);
-// }
