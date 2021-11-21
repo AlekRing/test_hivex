@@ -1,18 +1,29 @@
-import React from "react";
-import { InteractiveDots } from "../interactiveDots/interactiveDots";
-import RequestField from "./requestField/requestField";
-import ResponseField from "./responseField/responseField";
+import React, { useState } from "react";
+import Split from "react-split";
+import { reqParagraph, resParagraph } from "../../data/globalVariables";
+import RequestResponseField from "./requestResponseField/requestResponseField";
 
+import "./split.css";
 import s from "./style.module.scss";
 
-function RequestResponseFields() {
+function ConsoleCoreInputs() {
+  const [requestInput, setRequestInput] = useState("");
+  const [responsetInput, setResponsetInput] = useState("");
+
   return (
-    <section className={s.wrapper}>
-      <RequestField />
-      <InteractiveDots action={() => console.log("mooooove")} styles={s.dots} />
-      <ResponseField />
-    </section>
+    <Split sizes={[50, 50]} className={s.wrapper}>
+      <RequestResponseField
+        paragraph={reqParagraph}
+        input={requestInput}
+        handleChange={setRequestInput}
+      />
+      <RequestResponseField
+        paragraph={resParagraph}
+        input={responsetInput}
+        handleChange={setResponsetInput}
+      />
+    </Split>
   );
 }
 
-export default RequestResponseFields;
+export default ConsoleCoreInputs;

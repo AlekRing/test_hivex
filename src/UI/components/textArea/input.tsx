@@ -3,33 +3,29 @@ import React from "react";
 import s from "./style.module.scss";
 import cn from "classnames";
 import {
-  defaulInputType,
   defaultInputIsRequired,
   defaultStyles,
 } from "../../data/globalVariables";
 
-interface IInput {
+interface ITextarea {
   onChange: Function;
   placeHolder: InputPlaceholder;
   value: InputValue;
-  type: InputType;
   styles?: string;
   isRequired?: InputIsRequired;
 }
 
-export const Input = ({
+export const Textarea = ({
   onChange,
   placeHolder,
   value,
-  type = defaulInputType,
   styles = defaultStyles,
   isRequired = defaultInputIsRequired,
-}: IInput) => {
+}: ITextarea) => {
   return (
-    <input
-      className={cn(s.input, styles)}
+    <textarea
+      className={cn(s.textarea, styles)}
       value={value}
-      type={type}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeHolder}
       required={isRequired}

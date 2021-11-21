@@ -4,7 +4,7 @@ import cn from "classnames";
 import s from "./style.module.scss";
 
 interface IInteractiveDots {
-  styles?: any;
+  styles?: string;
   action: React.MouseEventHandler<HTMLDivElement>;
 }
 
