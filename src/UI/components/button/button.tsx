@@ -10,7 +10,7 @@ interface IButton {
   isLoading: IsLoadingFlag;
   text: ShortText;
   type?: ButtonType;
-  styles?: any;
+  styles?: string;
 }
 
 export const Button = ({
