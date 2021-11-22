@@ -1,0 +1,9 @@
+.gutter {
+  background-image: url("./assets/dots.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.gutter:hover {
+  cursor: col-resize;
+}

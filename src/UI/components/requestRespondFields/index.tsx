@@ -1,18 +1,60 @@
-import React from "react";
-import { InteractiveDots } from "../interactiveDots/interactiveDots";
-import RequestField from "./requestField/requestField";
-import ResponseField from "./responseField/responseField";
+import React, { useEffect, useState } from "react";
+import Split from "react-split";
+import {
+  defaultSplitSizes,
+  reqParagraph,
+  resParagraph,
+} from "../../data/globalVariables";
+import RequestResponseField from "./requestResponseField/requestResponseField";
 
+import "./split.css";
 import s from "./style.module.scss";
 
-function RequestResponseFields() {
+function ConsoleCoreInputs() {
+  const [requestInput, setRequestInput] = useState("");
+  const [responsetInput, setResponsetInput] = useState("");
+  const [splitSizes, setSplitSizes] = useState(defaultSplitSizes);
+
+  useEffect(() => {
+    let sizes: any = localStorage.getItem("split-sizes");
+
+    try {
+      if (sizes) {
+        sizes = JSON.parse(sizes);
+      } else {
+        sizes = defaultSplitSizes;
+      }
+    } catch (error) {
+      console.error(error);
+      sizes = defaultSplitSizes;
+    }
+
+    setSplitSizes(sizes);
+  }, []);
+
+  const handleDragEnd = (sizes: any) => {
+    localStorage.setItem("split-sizes", JSON.stringify(sizes));
+  };
+
   return (
-    <section className={s.wrapper}>
-      <RequestField />
-      <InteractiveDots action={() => console.log("mooooove")} styles={s.dots} />
-      <ResponseField />
-    </section>
+    <Split
+      sizes={splitSizes}
+      className={s.wrapper}
+      onDragEnd={(sizes) => handleDragEnd(sizes)}
+    >
+      <RequestResponseField
+        paragraph={reqParagraph}
+        input={requestInput}
+        handleChange={setRequestInput}
+      />
+      <RequestResponseField
+        paragraph={resParagraph}
+        input={responsetInput}
+        handleChange={setResponsetInput}
+        readOnly
+      />
+    </Split>
   );
 }
 
-export default RequestResponseFields;
+export default ConsoleCoreInputs;

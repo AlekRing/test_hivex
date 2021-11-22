@@ -7,32 +7,15 @@
 }
 
 .input_wrapper {
-  width: 100%;
+  margin-top: 4px;
   padding: 10px;
+  height: calc(100% - var(--input-field-gaps));
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-general);
-  resize: horizontal;
 }
 
 .input {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  border: none;
-  padding: 0;
   font-size: 14px;
   line-height: 18px;
-}
-
-.dots {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 3px;
-}
-
-.dots:hover {
-  cursor: col-resize;
+  border: none;
 }
