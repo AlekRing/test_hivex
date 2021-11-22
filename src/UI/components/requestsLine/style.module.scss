@@ -1,9 +1,13 @@
+.scroll_wrapper {
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--console-main-gray);
+}
+
 .wrapper {
   display: flex;
   align-items: center;
-  background-color: var(--console-main-gray);
   padding: 10px 15px;
-  border-bottom: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
 }
@@ -19,13 +23,15 @@
 .cross {
   width: 50px;
   height: 100%;
+  right: 0;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   background: var(--console-main-gray);
   border-left: 1px solid var(--border-color);
-  right: 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .gradient {

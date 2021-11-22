@@ -19,11 +19,7 @@ function ConsoleCoreInputs() {
     let sizes: any = localStorage.getItem("split-sizes");
 
     try {
-      if (sizes) {
-        sizes = JSON.parse(sizes);
-      } else {
-        sizes = defaultSplitSizes;
-      }
+      sizes ? (sizes = JSON.parse(sizes)) : (sizes = defaultSplitSizes);
     } catch (error) {
       console.error(error);
       sizes = defaultSplitSizes;
