@@ -7,9 +7,15 @@ interface IInputField {
   paragraph: ShortText;
   input: string;
   handleChange: Function;
+  readOnly?: IsReadOnlyFlag;
 }
 
-function RequestResponseField({ paragraph, input, handleChange }: IInputField) {
+function RequestResponseField({
+  paragraph,
+  input,
+  handleChange,
+  readOnly = false,
+}: IInputField) {
   return (
     <section>
       <label>{paragraph}</label>
@@ -19,6 +25,7 @@ function RequestResponseField({ paragraph, input, handleChange }: IInputField) {
           onChange={handleChange}
           placeHolder=""
           styles={s.input}
+          readOnly={readOnly}
         />
       </form>
     </section>

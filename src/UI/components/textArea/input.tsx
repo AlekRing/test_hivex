@@ -13,6 +13,7 @@ interface ITextarea {
   value: InputValue;
   styles?: string;
   isRequired?: InputIsRequired;
+  readOnly?: IsReadOnlyFlag;
 }
 
 export const Textarea = ({
@@ -21,6 +22,7 @@ export const Textarea = ({
   value,
   styles = defaultStyles,
   isRequired = defaultInputIsRequired,
+  readOnly = false,
 }: ITextarea) => {
   return (
     <textarea
@@ -29,6 +31,7 @@ export const Textarea = ({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeHolder}
       required={isRequired}
+      readOnly={readOnly}
     />
   );
 };

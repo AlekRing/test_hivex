@@ -28,3 +28,6 @@ export const sadSmileAlt = "sad";
 //Req res input fields
 export const reqParagraph = "Запрос:";
 export const resParagraph = "Ответ:";
+
+//Split
+export const defaultSplitSizes = [50, 50];

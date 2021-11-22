@@ -39,7 +39,7 @@ function InputsWrapper({
           placeHolder={loginInputSecondaryText}
           type="text"
           isRequired
-          styles={isValid === false ? s.invalid_input : null}
+          styles={isValid === false ? s.invalid_input : undefined}
         />
       </div>
       <div className={s.input_wrapper}>
@@ -62,7 +62,10 @@ function InputsWrapper({
           placeHolder={passwordInputSecondaryText}
           type="password"
           isRequired
-          styles={cn(isValid === false ? s.invalid_input : null, s.password)}
+          styles={cn(
+            isValid === false ? s.invalid_input : undefined,
+            s.password
+          )}
         />
       </div>
     </section>
