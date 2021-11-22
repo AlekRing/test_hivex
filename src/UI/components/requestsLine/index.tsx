@@ -19,12 +19,25 @@ function RequestsLine() {
     setOpenedDropdown(e.currentTarget.id);
   };
 
+  const onWheel = (e: any) => {
+    const container = e.currentTarget;
+    const containerScrollPosition = container!.scrollLeft;
+
+    container!.scrollTo({
+      top: 0,
+      left: containerScrollPosition + e.deltaY,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <section className={s.wrapper}>
-      <section className={s.requests}>
-        {moked.map((r, i) => (
-          <SentRequest key={r.action + i} request={r} action={openDropdown} />
-        ))}
+    <section className={s.scroll_wrapper}>
+      <section className={s.wrapper} onWheel={onWheel}>
+        <section className={s.requests}>
+          {moked.map((r, i) => (
+            <SentRequest key={r.action + i} request={r} action={openDropdown} />
+          ))}
+        </section>
       </section>
       <div className={s.cross}>
         <div className={s.gradient} />
