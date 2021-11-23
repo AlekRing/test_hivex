@@ -10,7 +10,11 @@ import s from "./style.module.scss";
 
 const moked = mokRequests(15);
 
-function RequestsLine() {
+interface IRequestLine {
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
+}
+
+function RequestsLine({ handleClick }: IRequestLine) {
   const [openedDropdown, setOpenedDropdown] = useState(null);
 
   const requests = useSelector(selectRequests);
@@ -34,9 +38,15 @@ function RequestsLine() {
     <section className={s.scroll_wrapper}>
       <section className={s.wrapper} onWheel={onWheel}>
         <section className={s.requests}>
-          {moked.map((r, i) => (
-            <SentRequest key={r.action + i} request={r} action={openDropdown} />
-          ))}
+          {requests.length &&
+            requests.map((r: any, i: number) => (
+              <SentRequest
+                key={r.action.action + i}
+                request={r}
+                action={openDropdown}
+                handleClick={handleClick}
+              />
+            ))}
         </section>
       </section>
       <div className={s.cross}>

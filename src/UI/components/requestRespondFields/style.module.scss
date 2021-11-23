@@ -19,3 +19,33 @@
   line-height: 18px;
   border: none;
 }
+
+.invalid {
+  border: 1px solid var(--error-color);
+}
+
+.info_block {
+  display: flex;
+}
+
+.error_block {
+  margin: 0;
+  margin-left: 20px;
+  padding: 0;
+  height: 20px;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -7,6 +7,10 @@
   }
 }
 
+.format:hover {
+  cursor: pointer;
+}
+
 .githubLink:hover {
   color: var(--status-failed-color);
 }

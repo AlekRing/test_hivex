@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Split from "react-split";
 import {
+  selectErrorText,
+  selectIsValidResponse,
+  selectResponse,
+} from "../../../services/store/selectors";
+import { formatResponse } from "../../../services/utilities/utilities";
+import {
   defaultSplitSizes,
+  JSONErrorText,
   reqParagraph,
   resParagraph,
 } from "../../data/globalVariables";
@@ -10,10 +18,23 @@ import RequestResponseField from "./requestResponseField/requestResponseField";
 import "./split.css";
 import s from "./style.module.scss";
 
-function ConsoleCoreInputs() {
-  const [requestInput, setRequestInput] = useState("");
+interface IConsoleCoreInputs {
+  input: string;
+  handleChange: Function;
+  isValid: IsValidFlag;
+}
+
+function ConsoleCoreInputs({
+  input,
+  handleChange,
+  isValid,
+}: IConsoleCoreInputs) {
   const [responsetInput, setResponsetInput] = useState("");
   const [splitSizes, setSplitSizes] = useState(defaultSplitSizes);
+
+  const isValidResponse = useSelector(selectIsValidResponse);
+  const response = useSelector(selectResponse);
+  const errorText = useSelector(selectErrorText);
 
   useEffect(() => {
     let sizes: any = localStorage.getItem("split-sizes");
@@ -28,8 +49,19 @@ function ConsoleCoreInputs() {
     setSplitSizes(sizes);
   }, []);
 
+  useEffect(() => {
+    if (!response) return;
+    const formated = formatResponse(response);
+
+    setResponsetInput(formated ? formated : "");
+  }, [response]);
+
   const handleDragEnd = (sizes: any) => {
-    localStorage.setItem("split-sizes", JSON.stringify(sizes));
+    try {
+      localStorage.setItem("split-sizes", JSON.stringify(sizes));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -40,14 +72,17 @@ function ConsoleCoreInputs() {
     >
       <RequestResponseField
         paragraph={reqParagraph}
-        input={requestInput}
-        handleChange={setRequestInput}
+        input={input}
+        handleChange={handleChange}
+        isValid={isValid}
+        errorText={JSONErrorText}
       />
       <RequestResponseField
         paragraph={resParagraph}
         input={responsetInput}
-        handleChange={setResponsetInput}
         readOnly
+        isValid={isValidResponse}
+        errorText={errorText}
       />
     </Split>
   );
