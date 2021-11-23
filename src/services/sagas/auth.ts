@@ -2,7 +2,7 @@ import { put, takeEvery } from "redux-saga/effects";
 import api from "../helpers/sendsay";
 import {
   authenticate,
-  authFail,
+  logOut,
   authSuccess,
   logError,
 } from "../store/reducers/auth";
@@ -48,7 +48,7 @@ function* authFailedSaga(err: any) {
 }
 
 export function* logoutSaga() {
-  yield put(authFail());
+  yield put(logOut());
   document.cookie = "";
 }
 

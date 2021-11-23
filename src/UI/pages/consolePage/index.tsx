@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header";
 import { startSendingRequest } from "../../../services/store/reducers/requests";
-
+import { selectRequests } from "../../../services/store/selectors";
 import RequestResponseFields from "../../components/requestRespondFields";
 import RequestsLine from "../../components/requestsLine";
 import {
@@ -13,13 +13,16 @@ import {
 
 function Console() {
   const dispatch = useDispatch();
+  
   const [requestInput, setRequestInput] = useState("");
   const [isValid, setIsValid] = useState<IsValidFlag>(null);
+
+  const requests = useSelector(selectRequests);
 
   const handleSubmit = () => {
     const { valid, parsed } = validateJSON(requestInput);
 
-    valid && dispatch(startSendingRequest(parsed));
+    valid && dispatch(startSendingRequest({ parsed, requests }));
 
     setIsValid(valid);
   };

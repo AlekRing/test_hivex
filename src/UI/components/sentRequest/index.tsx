@@ -5,9 +5,9 @@ import s from "./style.module.scss";
 import { InteractiveDots } from "../interactiveDots/interactiveDots";
 
 interface ISentRequest {
-  request: { action: any; success: boolean };
+  request: ConsoleRequest;
   action: React.MouseEventHandler<HTMLDivElement>;
-  handleClick: React.MouseEventHandler<HTMLDivElement>;
+  handleClick: Function;
 }
 
 function SentRequest({ request, action, handleClick }: ISentRequest) {

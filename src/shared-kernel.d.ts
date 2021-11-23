@@ -9,7 +9,8 @@ type IsLoadingFlag = boolean;
 type IsReadOnlyFlag = boolean;
 type IsValidFlag = boolean | null;
 type AuthErrorMessage = { id: ShortText; explain: ShortText };
-type ConsoleRequest = { action: ShortText; id: ShortText };
+type ConsoleRequest = { action: ConsoleRequestData; success: boolean };
+type ConsoleRequestData = { action: ShortText; id: ShortText };
 type ConsoleResponse = {
   sublogin?: ShortText;
   account: ShortText;
