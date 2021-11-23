@@ -1,0 +1,12 @@
+.format {
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-left: 8px;
+  }
+}
+
+.githubLink:hover {
+  color: var(--status-failed-color);
+}

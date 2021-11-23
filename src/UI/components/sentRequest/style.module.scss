@@ -1,0 +1,43 @@
+.request {
+  display: flex;
+  align-items: center;
+  background: var(--main-white);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-general);
+  padding: 5px 10px;
+}
+
+.request:hover {
+  cursor: pointer;
+}
+
+.text {
+  margin-left: 6px;
+  margin-bottom: 2px;
+}
+
+.status {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.small_dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--border-color);
+}
+
+.done {
+  background-color: var(--status-done-color);
+}
+
+.failed {
+  background-color: var(--status-failed-color);
+}
+
+.dots {
+  margin-left: 10px;
+}

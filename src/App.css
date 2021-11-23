@@ -10,8 +10,28 @@
   --blue-gradient-active: #00000026;
   --disabled: #c4c4c4;
 
+  --console-main-gray: #f6f6f6;
+  --border-color: #00000033;
+
+  --status-done-color: #30b800;
+  --status-failed-color: #cf2c00;
+
   --error-bg: #cf2c001a;
   --error-color: #cf2c00;
+
+  --font-size-large: 20px;
+  --font-size-medium: 16px;
+  --font-size-small: 20px;
+  --border-radius-general: 5px;
+  --console-lines-height: 200px;
+  --input-field-gaps: 47px;
+}
+
+footer {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 button {
@@ -34,4 +54,9 @@ h2,
 h3,
 h4 {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--gray-medium);
 }

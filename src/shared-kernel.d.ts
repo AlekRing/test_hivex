@@ -6,5 +6,6 @@ type ButtonType = "submit" | "button" | "reset";
 type ShortText = string;
 type IsActiveFlag = boolean;
 type IsLoadingFlag = boolean;
+type IsReadOnlyFlag = boolean;
 type IsValidFlag = boolean | null;
 type AuthErrorMessage = { id: ShortText; explain: ShortText };

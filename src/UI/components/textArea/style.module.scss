@@ -1,11 +1,10 @@
-.input {
+.textarea {
   width: 100%;
-  max-width: 460px;
-  height: 40px;
-  padding: 10px 6px;
-  border: 1px solid var(--border-color);
+  height: 100%;
   font-size: 18px;
   line-height: 30px;
+  resize: none;
+  outline: none;
   border-radius: var(--border-radius-general);
   box-sizing: border-box;
 }
