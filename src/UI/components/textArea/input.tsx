@@ -8,7 +8,11 @@ import {
 } from "../../data/globalVariables";
 
 interface ITextarea {
+<<<<<<< HEAD
   onChange?: Function;
+=======
+  onChange: Function;
+>>>>>>> 7660ae7315fd5d37679a6aa1238e4a45a53a0017
   placeHolder: InputPlaceholder;
   value: InputValue;
   styles?: string;
