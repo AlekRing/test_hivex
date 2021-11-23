@@ -45,7 +45,7 @@ function* handleSuccessfulRequest({ payload, response }: any) {
 }
 
 function* handleFailedRequest({ payload, error }: any) {
-  console.log(error.id);
+  console.error(error);
   yield put(
     addRequest({
       request: { action: payload, success: false },

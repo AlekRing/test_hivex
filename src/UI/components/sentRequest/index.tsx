@@ -12,7 +12,7 @@ interface ISentRequest {
 
 function SentRequest({ request, action, handleClick }: ISentRequest) {
   return (
-    <div className={s.request} onClick={handleClick}>
+    <div className={s.request} onClick={() => handleClick(request.action)}>
       <p className={cn(request.success ? s.done : s.failed, s.status)} />
       <p className={s.text}>{request.action.action}</p>
       <InteractiveDots action={action} styles={s.dots} />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRequests } from "../../../services/store/selectors";
 import { Cross } from "../icons/cross";
 import SentRequest from "../sentRequest";
@@ -7,6 +7,7 @@ import SentRequest from "../sentRequest";
 import { mokRequests } from "../../mok/mokRequests";
 
 import s from "./style.module.scss";
+import { clearRequests } from "../../../services/store/reducers/requests";
 
 const moked = mokRequests(15);
 
@@ -15,6 +16,7 @@ interface IRequestLine {
 }
 
 function RequestsLine({ handleClick }: IRequestLine) {
+  const dispatch = useDispatch();
   const [openedDropdown, setOpenedDropdown] = useState(null);
 
   const requests = useSelector(selectRequests);
@@ -34,6 +36,10 @@ function RequestsLine({ handleClick }: IRequestLine) {
     });
   };
 
+  const handleCrossClick = () => {
+    dispatch(clearRequests());
+  };
+
   return (
     <section className={s.scroll_wrapper}>
       <section className={s.wrapper} onWheel={onWheel}>
@@ -49,7 +55,7 @@ function RequestsLine({ handleClick }: IRequestLine) {
             ))}
         </section>
       </section>
-      <div className={s.cross}>
+      <div className={s.cross} onClick={handleCrossClick}>
         <div className={s.gradient} />
         <Cross />
       </div>

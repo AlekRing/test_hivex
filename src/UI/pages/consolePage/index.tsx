@@ -39,8 +39,6 @@ function Console() {
   };
 
   const handdleRequestClick = (request: any) => {
-    console.log(request);
-
     try {
       const formatted = formatResponse(request);
       setRequestInput(formatted);

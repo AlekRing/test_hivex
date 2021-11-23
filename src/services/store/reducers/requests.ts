@@ -32,6 +32,10 @@ const requestsSlice = createSlice({
       ...state,
       errorText: action.payload,
     }),
+    clearRequests: (state) => ({
+      ...state,
+      requests: [],
+    }),
   },
 });
 
@@ -41,6 +45,7 @@ export const {
   endSendingRequest,
   addResponse,
   addErrorText,
+  clearRequests,
 } = requestsSlice.actions;
 
 export default requestsSlice.reducer;
