@@ -10,15 +10,11 @@ import s from "./style.module.scss";
 
 const moked = mokRequests(15);
 
-<<<<<<< HEAD
 interface IRequestLine {
   handleClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
 function RequestsLine({ handleClick }: IRequestLine) {
-=======
-function RequestsLine() {
->>>>>>> 7660ae7315fd5d37679a6aa1238e4a45a53a0017
   const [openedDropdown, setOpenedDropdown] = useState(null);
 
   const requests = useSelector(selectRequests);

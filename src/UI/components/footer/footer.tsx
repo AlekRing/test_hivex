@@ -1,10 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-<<<<<<< HEAD
 import { selectIsSending } from "../../../services/store/selectors";
-=======
-import { selectLoading } from "../../../services/store/selectors";
->>>>>>> 7660ae7315fd5d37679a6aa1238e4a45a53a0017
 import {
   buttonText,
   formatText,
