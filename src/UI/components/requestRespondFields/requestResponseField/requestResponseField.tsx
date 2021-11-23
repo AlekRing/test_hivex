@@ -26,9 +26,10 @@ function RequestResponseField({
     <section>
       <div className={s.info_block}>
         <label>{paragraph}</label>
-        {isValid === false ? (
-          <ErrorBlock errorText={errorText} styles={s.error_block} />
-        ) : null}
+        {isValid === false 
+          ? (<ErrorBlock errorText={errorText} styles={s.error_block} />)
+          : null
+        }
       </div>
       <form
         className={cn(

@@ -84,12 +84,13 @@ function LoginPage() {
         {errorMessage && (
           <ErrorBlock errorText={authErrorText} errorMessage={errorMessage} />
         )}
-        {isValid === false ? (
-          <ErrorBlock
+        {isValid === false
+          ? (<ErrorBlock
             errorText={authValidationErrorText}
             errorMessage={validationError}
-          />
-        ) : null}
+            />)
+          : null
+        }
         <InputsWrapper
           login={login}
           setLogin={setLogin}
