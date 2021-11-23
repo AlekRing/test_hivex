@@ -1,4 +1,2 @@
 /// <reference types="react-scripts" />
-import Sendsay from "sendsay-api";
-
-export default Sendsay;
+export * as Sendsay from "sendsay-api";

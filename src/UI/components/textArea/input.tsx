@@ -8,7 +8,7 @@ import {
 } from "../../data/globalVariables";
 
 interface ITextarea {
-  onChange: Function;
+  onChange?: Function;
   placeHolder: InputPlaceholder;
   value: InputValue;
   styles?: string;
@@ -28,7 +28,7 @@ export const Textarea = ({
     <textarea
       className={cn(s.textarea, styles)}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => onChange && onChange(e.target.value)}
       placeholder={placeHolder}
       required={isRequired}
       readOnly={readOnly}

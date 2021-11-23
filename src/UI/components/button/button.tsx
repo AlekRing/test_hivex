@@ -28,7 +28,10 @@ export const Button = ({
       onClick={action && action}
       disabled={isDisabled}
     >
-      {isLoading ? <img src="/icons/loader.svg" alt="loading" /> : text}
+      {isLoading
+        ? (<img src="/icons/loader.svg" alt="loading" className={s.rotate} />)
+        : (text)
+      }
     </button>
   );
 };

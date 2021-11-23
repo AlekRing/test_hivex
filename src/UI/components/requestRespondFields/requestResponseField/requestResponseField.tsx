@@ -1,13 +1,17 @@
 import React from "react";
 import { Textarea } from "../../textArea/input";
 
+import cn from "classnames";
 import s from "../style.module.scss";
+import { ErrorBlock } from "../../errorBlock/errorBlock";
 
 interface IInputField {
   paragraph: ShortText;
   input: string;
-  handleChange: Function;
+  handleChange?: Function;
   readOnly?: IsReadOnlyFlag;
+  isValid?: IsValidFlag;
+  errorText: ShortText;
 }
 
 function RequestResponseField({
@@ -15,14 +19,28 @@ function RequestResponseField({
   input,
   handleChange,
   readOnly = false,
+  isValid,
+  errorText,
 }: IInputField) {
   return (
     <section>
-      <label>{paragraph}</label>
-      <form className={s.input_wrapper} onSubmit={(e) => e.preventDefault()}>
+      <div className={s.info_block}>
+        <label>{paragraph}</label>
+        {isValid === false 
+          ? (<ErrorBlock errorText={errorText} styles={s.error_block} />)
+          : null
+        }
+      </div>
+      <form
+        className={cn(
+          s.input_wrapper,
+          isValid === false ? s.invalid : undefined
+        )}
+        onSubmit={(e) => e.preventDefault()}
+      >
         <Textarea
           value={input}
-          onChange={handleChange}
+          onChange={handleChange && handleChange}
           placeHolder=""
           styles={s.input}
           readOnly={readOnly}

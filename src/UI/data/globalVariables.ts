@@ -31,3 +31,15 @@ export const resParagraph = "Ответ:";
 
 //Split
 export const defaultSplitSizes = [50, 50];
+
+//JSON
+export const JSONErrorText = "Невалидный формат JSON";
+export const schema = {
+  type: "object",
+  properties: {
+    action: { type: "string" },
+    id: { type: "string" },
+  },
+  required: ["action"],
+  additionalProperties: false,
+};

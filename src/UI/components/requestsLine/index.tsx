@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRequests } from "../../../services/store/selectors";
 import { Cross } from "../icons/cross";
 import SentRequest from "../sentRequest";
@@ -7,10 +7,16 @@ import SentRequest from "../sentRequest";
 import { mokRequests } from "../../mok/mokRequests";
 
 import s from "./style.module.scss";
+import { clearRequests } from "../../../services/store/reducers/requests";
 
 const moked = mokRequests(15);
 
-function RequestsLine() {
+interface IRequestLine {
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
+}
+
+function RequestsLine({ handleClick }: IRequestLine) {
+  const dispatch = useDispatch();
   const [openedDropdown, setOpenedDropdown] = useState(null);
 
   const requests = useSelector(selectRequests);
@@ -30,16 +36,26 @@ function RequestsLine() {
     });
   };
 
+  const handleCrossClick = () => {
+    dispatch(clearRequests());
+  };
+
   return (
     <section className={s.scroll_wrapper}>
       <section className={s.wrapper} onWheel={onWheel}>
         <section className={s.requests}>
-          {moked.map((r, i) => (
-            <SentRequest key={r.action + i} request={r} action={openDropdown} />
-          ))}
+          {requests.length &&
+            requests.map((r: any, i: number) => (
+              <SentRequest
+                key={r.action.action + i}
+                request={r}
+                action={openDropdown}
+                handleClick={handleClick}
+              />
+            ))}
         </section>
       </section>
-      <div className={s.cross}>
+      <div className={s.cross} onClick={handleCrossClick}>
         <div className={s.gradient} />
         <Cross />
       </div>

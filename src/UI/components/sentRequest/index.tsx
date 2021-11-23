@@ -5,15 +5,16 @@ import s from "./style.module.scss";
 import { InteractiveDots } from "../interactiveDots/interactiveDots";
 
 interface ISentRequest {
-  request: { action: string; done: boolean };
+  request: { action: any; success: boolean };
   action: React.MouseEventHandler<HTMLDivElement>;
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
-function SentRequest({ request, action }: ISentRequest) {
+function SentRequest({ request, action, handleClick }: ISentRequest) {
   return (
-    <div className={s.request}>
-      <p className={cn(request.done ? s.done : s.failed, s.status)} />
-      <p className={s.text}>{request.action}</p>
+    <div className={s.request} onClick={() => handleClick(request.action)}>
+      <p className={cn(request.success ? s.done : s.failed, s.status)} />
+      <p className={s.text}>{request.action.action}</p>
       <InteractiveDots action={action} styles={s.dots} />
     </div>
   );
