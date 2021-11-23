@@ -19,11 +19,11 @@ const requestsSlice = createSlice({
   initialState,
   reducers: {
     startSendingRequest: (state, action) => ({ ...state, sending: true }),
+    endSendingRequest: (state) => ({ ...state, sending: false }),
     addRequest: (state, action) => ({
       ...state,
       requests: [action.payload.request, ...state.requests],
     }),
-    endSendingRequest: (state) => ({ ...state, sending: false }),
     addResponse: (state, action) => ({
       ...state,
       response: action.payload.response,
@@ -36,6 +36,10 @@ const requestsSlice = createSlice({
       ...state,
       requests: [],
     }),
+    setOrganizedRequests: (state, action) => ({
+      ...state,
+      requests: action.payload,
+    }),
   },
 });
 
@@ -46,6 +50,7 @@ export const {
   addResponse,
   addErrorText,
   clearRequests,
+  setOrganizedRequests
 } = requestsSlice.actions;
 
 export default requestsSlice.reducer;

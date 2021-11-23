@@ -31,7 +31,7 @@ const authSlice = createSlice({
       login: action.payload.login,
       sublogin: action.payload.sublogin,
     }),
-    authFail: (state) => ({
+    logOut: (state) => ({
       ...state,
       loading: false,
       sessionKey: null,
@@ -45,7 +45,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { authenticate, authSuccess, authFail, logError } =
+export const { authenticate, authSuccess, logOut, logError } =
   authSlice.actions;
 
 export default authSlice.reducer;
