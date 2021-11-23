@@ -6,3 +6,4 @@ export const rootReducer = combineReducers({
   auth: authReducer,
   requests: requestsReducer,
 });
+
