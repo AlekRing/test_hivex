@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header";
@@ -13,9 +14,11 @@ import {
 
 function Console() {
   const dispatch = useDispatch();
+  const handle = useFullScreenHandle();
   
   const [requestInput, setRequestInput] = useState("");
   const [isValid, setIsValid] = useState<IsValidFlag>(null);
+  const [fullScreen, setFullScreen] = useState(false);
 
   const requests = useSelector(selectRequests);
 
@@ -50,9 +53,15 @@ function Console() {
     }
   };
 
+  const handleFullScreen = (type: FullScreenArgument) => {
+    type === 'enter' ? handle.enter() : handle.exit();
+
+    setFullScreen(p => !p);
+  }
+
   return (
-    <>
-      <Header />
+    <FullScreen handle={handle}>
+      <Header handleFullScreenClick={handleFullScreen} fullScreen={fullScreen} />
       <RequestsLine handleClick={handdleRequestClick} />
       <RequestResponseFields
         input={requestInput}
@@ -64,7 +73,7 @@ function Console() {
         handleSubmit={handleSubmit}
         handleFormat={handleFormat}
       />
-    </>
+    </FullScreen>
   );
 }
 

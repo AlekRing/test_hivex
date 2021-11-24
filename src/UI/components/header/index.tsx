@@ -4,13 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { logOut } from "../../../services/store/reducers/auth";
 import { selectLogin, selectSublogin } from "../../../services/store/selectors";
 import { appName, exit } from "../../data/globalVariables";
+import { ExitFullScreen } from "../icons/exitFullScreen";
 import { FullScreen } from "../icons/fullScreen";
 import { LogOut } from "../icons/logOut";
 import Logo from "../logo/logo";
 
 import s from "./style.module.scss";
 
-function Header() {
+interface IHeader {
+  handleFullScreenClick: Function;
+  fullScreen: IsFullScreenFlag;
+}
+
+function Header({ handleFullScreenClick, fullScreen }: IHeader) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,7 +43,16 @@ function Header() {
           <p>{exit}</p>
           <LogOut />
         </section>
-        <FullScreen />
+        {
+          fullScreen 
+          ? (<div onClick={() => handleFullScreenClick('exit')}>
+              <ExitFullScreen />
+            </div>)
+          : (<div onClick={() => handleFullScreenClick('enter')}>
+              <FullScreen />
+            </div>)
+        }
+        
       </section>
     </header>
   );
