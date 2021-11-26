@@ -8,12 +8,12 @@ import {
   defaultStyles,
 } from "../../data/globalVariables";
 
-interface IButton {
+interface IInput {
   onChange: Function;
   placeHolder: InputPlaceholder;
   value: InputValue;
   type: InputType;
-  styles?: any;
+  styles?: string;
   isRequired?: InputIsRequired;
 }
 
@@ -24,7 +24,7 @@ export const Input = ({
   type = defaulInputType,
   styles = defaultStyles,
   isRequired = defaultInputIsRequired,
-}: IButton) => {
+}: IInput) => {
   return (
     <input
       className={cn(s.input, styles)}

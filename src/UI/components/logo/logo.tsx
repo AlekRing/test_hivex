@@ -4,7 +4,7 @@ import cn from "classnames";
 import s from "./style.module.scss";
 
 interface ILogo {
-  styles: any;
+  styles?: string;
 }
 
 function Logo({ styles }: ILogo) {

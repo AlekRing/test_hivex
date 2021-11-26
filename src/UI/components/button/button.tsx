@@ -9,8 +9,8 @@ interface IButton {
   isDisabled?: IsActiveFlag;
   isLoading: IsLoadingFlag;
   text: ShortText;
-  type: ButtonType;
-  styles?: any;
+  type?: ButtonType;
+  styles?: string;
 }
 
 export const Button = ({
@@ -18,7 +18,7 @@ export const Button = ({
   isDisabled,
   isLoading,
   text,
-  type,
+  type = "button",
   styles = defaultStyles,
 }: IButton) => {
   return (
@@ -28,7 +28,10 @@ export const Button = ({
       onClick={action && action}
       disabled={isDisabled}
     >
-      {isLoading ? <img src="/icons/loader.svg" alt="loading" /> : text}
+      {isLoading
+        ? (<img src="/icons/loader.svg" alt="loading" className={s.rotate} />)
+        : (text)
+      }
     </button>
   );
 };

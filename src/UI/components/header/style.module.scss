@@ -1,0 +1,50 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--console-main-gray);
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo_wrapper {
+  display: flex;
+  align-items: center;
+
+  p {
+    font-size: var(--font-size-large);
+    line-height: 30px;
+  }
+}
+
+.logo {
+  margin-right: 20px;
+}
+
+.actions_wrapper {
+  display: flex;
+  align-items: center;
+
+  section + section {
+    margin-left: 30px;
+  }
+}
+
+.user_data_wrapper {
+  padding: 6px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-general);
+}
+
+.exit_wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+
+  p {
+    margin-right: 8px;
+  }
+}
+
+.exit_wrapper:hover {
+  cursor: pointer;
+}

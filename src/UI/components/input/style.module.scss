@@ -3,9 +3,9 @@
   max-width: 460px;
   height: 40px;
   padding: 10px 6px;
-  border: 1px solid var(--secondary-black);
+  border: 1px solid var(--border-color);
   font-size: 18px;
   line-height: 30px;
-  border-radius: 5px;
+  border-radius: var(--border-radius-general);
   box-sizing: border-box;
 }
